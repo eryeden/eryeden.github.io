@@ -28,7 +28,7 @@ const katex = require('rehype-katex');
           // Please change this to your repo.
           editUrl: 'https://github.com/eryeden/docs/tree/main/',
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins: [katex, { strict: false }],
         },
         blog: {
           showReadingTime: true,
@@ -36,7 +36,7 @@ const katex = require('rehype-katex');
           editUrl:
             'https://github.com/eryeden/docs/tree/main/',
           remarkPlugins: [math],
-          rehypePlugins: [katex],
+          rehypePlugins: [katex, { strict: false }],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
