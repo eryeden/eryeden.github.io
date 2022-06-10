@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Docs Blog</title>
+        <link>https://your-docusaurus-test-site.com/blog</link>
+        <description>Docs Blog</description>
+        <lastBuildDate>Sat, 11 Jun 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Test blog post]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/test-blog-post</link>
+            <guid>test-blog-post</guid>
+            <pubDate>Sat, 11 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
+        </item>
+    </channel>
+</rss>

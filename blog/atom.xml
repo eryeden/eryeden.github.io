@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://your-docusaurus-test-site.com/blog</id>
+    <title>Docs Blog</title>
+    <updated>2022-06-11T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
+    <subtitle>Docs Blog</subtitle>
+    <icon>https://your-docusaurus-test-site.com/img/scale-unbalanced.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Test blog post]]></title>
+        <id>test-blog-post</id>
+        <link href="https://your-docusaurus-test-site.com/blog/test-blog-post"/>
+        <updated>2022-06-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
+        <author>
+            <name>kk</name>
+            <uri>https://google.com</uri>
+        </author>
+    </entry>
+</feed>
