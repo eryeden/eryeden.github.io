@@ -8,13 +8,15 @@ const katex = require('rehype-katex');
 (module.exports = {
   title: 'Docs',
   tagline: 'Cool stuff',
-  url: 'https://eryeden.github.io/docs/',
+  url: 'https://eryeden.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/scale-unbalanced.svg',
   organizationName: 'eryeden', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  projectName: 'eryeden.github.io', // Usually your repo name.
+  trailingSlash: false,
+
 
   presets: [
     [
