@@ -2,14 +2,14 @@
 <rss version="2.0">
     <channel>
         <title>Docs Blog</title>
-        <link>https://eryeden.github.io/docs/blog</link>
+        <link>https://eryeden.github.io/blog</link>
         <description>Docs Blog</description>
         <lastBuildDate>Sat, 11 Jun 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[Test blog post]]></title>
-            <link>https://eryeden.github.io/docs/blog/test-blog-post</link>
+            <link>https://eryeden.github.io/blog/test-blog-post</link>
             <guid>test-blog-post</guid>
             <pubDate>Sat, 11 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
