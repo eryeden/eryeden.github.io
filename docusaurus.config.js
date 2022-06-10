@@ -8,7 +8,7 @@ const katex = require('rehype-katex');
 (module.exports = {
   title: 'Docs',
   tagline: 'Cool stuff',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://eryeden.github.io/docs/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
