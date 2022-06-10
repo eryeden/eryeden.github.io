@@ -7,14 +7,14 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
   title: 'Docs',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Cool stuff',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/scale-unbalanced.svg',
   organizationName: 'eryeden', // Usually your GitHub org/user name.
-  projectName: 'Docs project', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
   presets: [
     [
@@ -60,7 +60,7 @@ const katex = require('rehype-katex');
         title: 'Home',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/scale-unbalanced.svg',
         },
         items: [
           {
@@ -71,7 +71,7 @@ const katex = require('rehype-katex');
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/eryeden/docs',
             label: 'GitHub',
             position: 'right',
           },
