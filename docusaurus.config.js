@@ -67,7 +67,7 @@ const katex = require('rehype-katex');
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'index',
             position: 'left',
             label: 'Docs',
           },
@@ -86,8 +86,8 @@ const katex = require('rehype-katex');
             title: 'Docs',
             items: [
               {
-                label: 'Intro',
-                to: '/docs/intro',
+                label: 'Index',
+                to: '/docs/index',
               },
             ],
           }
