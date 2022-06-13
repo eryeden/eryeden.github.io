@@ -4,9 +4,16 @@
         <title>Docs Blog</title>
         <link>https://eryeden.github.io/blog</link>
         <description>Docs Blog</description>
-        <lastBuildDate>Sat, 11 Jun 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 13 Jun 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Memo]]></title>
+            <link>https://eryeden.github.io/blog/memo</link>
+            <guid>memo</guid>
+            <pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Loading...}>]]></description>
+        </item>
         <item>
             <title><![CDATA[Test blog post]]></title>
             <link>https://eryeden.github.io/blog/test-blog-post</link>
