@@ -5,6 +5,13 @@ authors: [eryeden]
 tags: [memo]
 ---
 
-import App from '@site/src/components/test-matter-js'
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
-<App />
+<BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        const App = require('@site/src/components/test-matter-js').App;
+        return <App />;
+      }}
+</BrowserOnly>
+
+
