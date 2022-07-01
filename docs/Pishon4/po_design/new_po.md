@@ -198,7 +198,7 @@ $$
 
 $$
 \begin{matrix}
-\rm{minimize} & \boldsymbol{x}^T Z \boldsymbol{x} + \boldsymbol{y}^T \boldsymbol{x} = V(P) \\
+\rm{minimize} & \frac{1}{2} \boldsymbol{x}^T Z \boldsymbol{x} + \boldsymbol{y}^T \boldsymbol{x} = V(P) \\
 \rm{subject\ to} & \boldsymbol{l} \leq A \boldsymbol{x} \leq \boldsymbol{u}
 \end{matrix}
 $$
