@@ -41,6 +41,11 @@ const katex = require('rehype-katex');
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        gtag: {
+          trackingID: 'G-7VZWW0043X',
+          anonymizeIP: true,
+        },
+        sitemap: {},
       }),
     ],
   ],
