@@ -371,8 +371,54 @@ $$
 u_2 = Q_R + \sum_{a\in\bm{A}} \sum_{i \in \bm{N_a}} \ _aq_i (1 - \ _a c_S) \ _ap
 $$
 
-- 拘束条件C3
+- 拘束条件C3, 拘束条件C4
 
+変数$\ _xq_i, x\in\bm{A}, i\in \bm{N_x}$と$\ _xq, x\in \bm{A}$に対しての上限、下限の拘束なので$A, \bm{l}, \bm{u}$は以下のようになる。
 
+$$
+A = 
+\begin{bmatrix}
+\bm{a}_1 \\
+\bm{a}_2 \\
+1, 0, \cdots, 0, 0\\
+0, 1, \cdots, 0, 0\\
+0,0,  \ddots, 0, 0\\
+0,0, \cdots, 1, 0\\
+0,0, \cdots, 0, 1
+\end{bmatrix}
+$$
 
-- 拘束条件C4
+:::note
+
+$\bm{a}_1, \bm{a}_2$以外は単位行列になっている。
+
+:::
+
+$$
+\bm{l} = 
+\begin{bmatrix}
+    l_1\\
+    -\infty\\
+    0\\
+    \vdots\\
+    0
+\end{bmatrix}
+$$
+
+$$
+\bm{u} = 
+\begin{bmatrix}
+    \infty\\
+    u_2\\
+    \ _1q_1\\
+    \ _1q_2\\
+    \vdots\\
+    \ _1q_{N_1}\\
+    \infty\\
+    \vdots\\
+    \ _Aq_1\\
+    \vdots\\
+    \ _Aq_{N_A}\\
+    \infty\\
+\end{bmatrix}
+$$
