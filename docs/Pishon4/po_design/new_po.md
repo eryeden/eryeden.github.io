@@ -25,21 +25,21 @@ POAssetInfo
 | a               | `base_asset_symbol`               | Name of base asset, $a\in A$                            |
 | i               | N/A                               | Asset slot number of asset a$i\in N_a$                  |
 | $\ _at_i$       | `acquisition_time_sec_utc`        | A creation timestamp of asset a                         |
-| $\ _ap_i$       | `buy_price`                       | Asset Aをタイムスロットiで購入したときの価格                              |
-| $\ _ap$         | `current_price`                   | Asset Aの現在の価格                                           |
-| $\ _a \hat{p}$  | `forecast_price`                  | Asset Aの予想価格                                            |
+| $\ _ap_i$       | `buy_price`                       | Asset Aをタイムスロットiで購入したときの価格            |
+| $\ _ap$         | `current_price`                   | Asset Aの現在の価格                                     |
+| $\ _a \hat{p}$  | `forecast_price`                  | Asset Aの予想価格                                       |
 | $\ _aq_i$       | `base_asset_quantity`             | The qunantity of asset a at timestmap $\ _at_i$         |
 | $\ _a q_i'$     | `optimal_base_asset_quantity`     | The optimal qunantity of asset a at timestmap $\ _at_i$ |
 | $\ _a q'$       | `new_optimal_base_asset_quantity` | The optimal qunantity of asset a that acquire now       |
 | $\ _ac_{B_i}$   | `buy_commission_rate`             | Buy commision rate of asset a                           |
 | $\ _ax_i$       | `asset_holding_rate`              | Current holding rate of asset a                         |
 | $\ _ax_i^\star$ | N/A                               | Optimal holding rate of asset a                         |
-| $P$             | `profit`                          | 利益                                                      |
-| $Q_F$           | `quantity_future`                 | 予想評価額                                                   |
-| $Q_I$           | `quantity_investment`             | 投資額                                                     |
-| $Q_R$           | `quantity_remaining`              | 保有している自由に利用できるQuote assetの量                             |
-| $A$             | `base_assets`                     | 対象の全Base assets                                         |
-| $N_a$           | `base_assets_time_slots`          | アセット$a$が有するタイムスロットの集合                                   |
+| $P$             | `profit`                          | 利益                                                    |
+| $Q_F$           | `quantity_future`                 | 予想評価額                                              |
+| $Q_I$           | `quantity_investment`             | 投資額                                                  |
+| $Q_R$           | `quantity_remaining`              | 保有している自由に利用できるQuote assetの量             |
+| $A$             | `base_assets`                     | 対象の全Base assets                                     |
+| $N_a$           | `base_assets_time_slots`          | アセット$a$が有するタイムスロットの集合                 |
 
 ## Problem formulation
 
@@ -213,7 +213,7 @@ $$
 ]
 $$
 
-このとき、$\{{1,...,A\}}\in A$、$\{{1,...,N_A\}}\in N_A$
+このとき、$\{{1,...,A\}}\in \bm{A}$、$\{{1,...,N_A\}}\in \bm{N_A}$
 
 **二次形式**
 
@@ -264,6 +264,30 @@ A=
 \end{bmatrix}
 $$
 
+$\bm{l}$を、
+
+$$
+\bm{l}=
+\begin{bmatrix}
+l_1\\
+l_2\\
+l_3\\
+...
+\end{bmatrix}
+$$
+
+$\bm{u}$を、
+
+$$
+\bm{u}=
+\begin{bmatrix}
+u_1\\
+u_2\\
+u_3\\
+...
+\end{bmatrix}
+$$
+
 とおく。
 
 - 拘束条件C1について; $P=Q_F-Q_I \geq P_E$:
@@ -292,20 +316,51 @@ $$
 ]
 $$
 
-また、下限$l_0$、上限$u_0$は、
+また、下限$l_1$、上限$u_1$は、
 
 $$
-l_0 = P_E -
+l_1 = P_E -
 \sum_{a \in A} \sum_{i\in N_a}
 \ _aq_i(\ _ap(1-\ _ac_S) - \ _ap_i(1+\ _ac_{B_i}))
 $$
 
 $$
-u_0 = \infty
+u_1 = \infty
 $$
 
 となる。
 
 - 拘束条件C2について; 
 
+この条件は$\bm{a}_2$として導入する。
+変形すると、以下のように書ける。
+$$
 
+\sum_{a\in\bm{A}} \left( \ _ap(1+\ _ac_B)\ _aq' + \sum_{i \in \bm{N_A}}{\ _ap (1-\ _ac_S)\ _aq_i'} \right)
+
+\leq 
+Q_R
++ \sum_{a\in\bm{A}}\sum_{i\in\bm{N_a}} \ _aq_i(1- \ _ac_S)\ _ap
+$$
+
+したがって、$\bm{a}_2$、$l_2$、$u_2$は次の通りになる:
+
+$$
+\bm{a}_2 = 
+[
+    \ _1p(1-\ _1c_S), ..., \ _1p(1-\ _1c_S), \ _1p(1+\ _1c_B), \\
+    ..., \\
+    \ _Ap(1-\ _Ac_S), ..., \ _Ap(1-\ _Ac_S), \ _Ap(1+\ _Ac_B)
+]
+$$
+
+下限について:
+$$
+l_2 = -\infty
+$$
+
+
+上限について:
+$$
+u_2 = Q_R + \sum_{a\in\bm{A}} \sum_{i \in \bm{N_a}} \ _aq_i (1 - \ _a c_S) \ _ap
+$$
