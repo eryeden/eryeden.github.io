@@ -27,7 +27,7 @@ const katex = require('rehype-katex');
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/eryeden/docs/tree/main/',
-          remarkPlugins: [math],
+          remarkPlugins: [math, require('mdx-mermaid')],
           rehypePlugins: [katex, { strict: false }],
         },
         blog: {
