@@ -21,8 +21,7 @@ const katex = require('rehype-katex');
   presets: [
     [
       '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -43,10 +42,13 @@ const katex = require('rehype-katex');
         },
         gtag: {
           trackingID: 'G-7VZWW0043X',
-          anonymizeIP: true,
         },
-        sitemap: {},
-      }),
+        sitemap: {
+          changefreq: 'daily',
+          priority: 0.5,
+          trailingSlash: false,
+        }
+      },
     ],
   ],
 
