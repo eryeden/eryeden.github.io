@@ -10,38 +10,72 @@
 POも含めると下記の流れでOrderPublishする。
 流れを説明する：
 
+
+
 ### 1. PO
 POから最適なPOAssetsが出力される。ここで各アセットの各タイムスロットでの最適保有量と最適な新規購入量がわかる。
 
-### 2. OrderAmountCalc
-現在のPOAssetsと最適POAssetsを比較し、各アセットごとの売却量を計算。購入量は各アセットの新規購入量になる。購入量は成行き注文の場合ではprice slippageにより希望のBase asset単位の購入量を実現できない可能性あり。Quote asset単位での注文を行うことで、注文が通らない可能性を考慮した若干少なめの注文などは不要になると思われる。
+### 2. Create sell order
+現在のPOAssetsと最適POAssetsを比較して売却量を決める。各アセットの各スロットでの保有量の差分の合計が売却量になる。
+最新のSaifuでの保有量を超えないように売却量を制限する。
 
-### 3. ExecuteSellOrder
-まずは売り注文を実行する。売却量と売り注文の成否からPOAssetを更新する。またSaifuデータも更新する。
+### 3. Execute sell order
+OrderInfoに基づいて売却する。Base asset量指定で成り行き注文。売却後は、Transaction resultsとSaifuデータを更新する。
 
-### 4. ExecuteBuyOrder
-売り注文の結果得たQuoteAssetの量を考慮して買い注文を実行する。買い注文は、得られるProfitの大きいアセットから実行する。買い注文の結果得たBaseAssetの量と成否からPOAssetを更新する。またSaifuデータも更新する。
+### 4. Update POAssets (sell)
+各アセットごとの売却完了量に応じて、Current POAssetを更新する。一番タイムスタンプの古いスロットから売却要求量を満たすようにスロットを更新する。
 
-### 5. POAssetAdjustment
-SaifuデータとPOAssetの整合性が取れるように各アセットのタイムスロットを調整する。また、一定以上時間が経つか量が微小なタイムスロットはマージする。そして出来上がった最終的なPOAssetsを保存し次回のPOに備える。
+### 5. Create buy order
+現在のQuote asset保有量と各アセットの購入要求量から、各アセットを新規購入する量をQuote asset単位で決定する。
+売却が不完全な場合などで必要な購入資金を準備できない場合は、Quote asset単位で購入割合が高いアセットを優先的に割り当てる。足りない場合は足りる分だけ購入する。
+
+### 6. Execute buy order
+OrderInfoに基づいて購入する。資金不足による購入失敗の影響を最小化するため買い割合の多いアセットから買い注文を実行する。Quote asset単位で購入するので足りなくなることはないと思われる。購入できない場合は、購入しない。こういった場合が多く発生するようなら購入量を若干小さくするマージンを設ける。また、Saifuデータを更新する。
+
+### 7. Update POAssets (buy) 
+Transaction infoに基づいて各アセットに新規購入タイムスロットを作成し、Current POAssetを更新する。
+ログとして要求のOptimal POAssetsとCurrent POAssetsの差分を計算する？目標値との差分的な感じ。
+
+### 8. POAssets adjustment
+Saifuとの整合性を取る。加えて、CurrentPOAssetのうち、一定期間以上経過したタイムスロット、一定値以下の価値しか持たないタイムスロットをマージする。更新したCurrentPOAssetを出力する。
 
 ```mermaid
 flowchart TD
-    Start --> PO
-    PO --> |Optimal POAssets| CS[Create sell order]
-    A(Current POAssets) --> CS
+    saifu[(Saifu)]
+    CP(Current POAssets)
+    PO[PO]
+    CS[Create sell order]
+    CB[Create buy order]
+    UPO1[UpdatePOAssets]
+    UPO2[UpdatePOAssets]
+    APO[POAssets adjustment]
+
+    Start --> RefreshSaifu
+    RefreshSaifu --> |refresh|saifu
+    RefreshSaifu --> PO
+    saifu --> PO
+    PO --> |Optimal POAssets| CS
+    saifu --> CS
+
+    CP --> CS
     CS --> |Order info|ExecuteSellOrder
+    ExecuteSellOrder --> |refresh|saifu
 
-    ExecuteSellOrder --> |Transaction result| ExecuteBuyOrder
-    UO[Update POAssets]
-    ExecuteBuyOrder --> POAssetAdjustment
-    POAssetAdjustment --> |Final POAssets|End
+    ExecuteSellOrder --> |Transaction result|UPO1
+    saifu --> UPO1
 
-    
-    B(Saifu data) --> POAssetAdjustment
+    UPO1 --> |Updated POAssets|CB
+    saifu --> CB
+
+    CB --> |Order info| ExecuteBuyOrder
+
+    ExecuteBuyOrder --> |Transaction result|UPO2
+    ExecuteBuyOrder --> |refresh|saifu
+    saifu --> UPO2
+
+    UPO2-->|Updated POAssets|APO
+
+    APO --> |Adjusted POAssets|End
 ``` 
 
 ## Input
-
-
-
