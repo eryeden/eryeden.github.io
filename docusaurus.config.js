@@ -22,6 +22,7 @@ const katex = require('rehype-katex');
     [
       '@docusaurus/preset-classic',
       {
+        debug: false,
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -41,9 +42,6 @@ const katex = require('rehype-katex');
           customCss: require.resolve('./src/css/custom.css'),
         },
         gtag: {
-          trackingID: 'G-7VZWW0043X',
-        },
-        googleAnalytics: {
           trackingID: 'G-7VZWW0043X',
         },
         sitemap: {
@@ -88,17 +86,6 @@ const katex = require('rehype-katex');
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Index',
-                to: '/docs/index',
-              },
-            ],
-          }
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} eryeden, Inc. Built with Docusaurus.`,
       },
       prism: {
