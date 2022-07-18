@@ -43,6 +43,9 @@ const katex = require('rehype-katex');
         gtag: {
           trackingID: 'G-7VZWW0043X',
         },
+        googleAnalytics: {
+          trackingID: 'G-7VZWW0043X',
+        },
         sitemap: {
           changefreq: 'daily',
           priority: 0.5,
@@ -104,9 +107,6 @@ const katex = require('rehype-katex');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-      },
-      gtag: {
-        trackingID: 'G-7VZWW0043X',
       },
     }),
 });
