@@ -47,9 +47,6 @@ const katex = require('rehype-katex');
           trackingID: 'G-7VZWW0043X',
         },
         sitemap: {
-          changefreq: 'daily',
-          priority: 0.5,
-          trailingSlash: false,
         }
       },
     ],
