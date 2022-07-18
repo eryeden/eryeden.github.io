@@ -22,7 +22,6 @@ const katex = require('rehype-katex');
     [
       '@docusaurus/preset-classic',
       {
-        debug: false,
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -105,6 +104,9 @@ const katex = require('rehype-katex');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      gtag: {
+        trackingID: 'G-7VZWW0043X',
       },
     }),
 });
