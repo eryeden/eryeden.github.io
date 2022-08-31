@@ -7,11 +7,12 @@ tags: [memo, python, rclpy]
 
 ROS2ではTopicのSubscribe時に呼ばれるCallbackやTimerのCallbackを仕込むことができる。
 Callback関数内でROS2のServiceを呼ぶとデッドロックする場合がある。
+[ドキュメント](https://docs.ros2.org/foxy/api/rclpy/api/services.html#rclpy.client.Client.call)にもWarningでデッドロックの旨が書いてある。じゃあどうすればいいの？ただ、サービス呼んで結果を受け取る程度のこともできないの！？と思ってしまう。
 以下の方法で回避が可能。
 
 ポイントは`MutuallyExclusiveCallbackGroup`。Node内のServiceClientとTimerCallbackを別スレッドで処理することを明示している。
 この場合、`MultiThreadedExecutor`でNodeを実行する必要があるので注意。
-
+ServiceClientとCallbackが同一スレッドで走るとデッドロックするのだろう。
 
 ```python
 import rclpy
